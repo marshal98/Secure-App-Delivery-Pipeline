@@ -1,0 +1,1 @@
+# Will contain the in-memory note storage
