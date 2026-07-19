@@ -2,7 +2,7 @@
 
 An end-to-end DevSecOps project demonstrating how to securely build, containerize, provision infrastructure, and deploy an application using modern cloud-native practices.
 
-## Project Goals
+## Project Goals:
 
 - Provision infrastructure using Terraform
 - Deploy a containerized application on Google Cloud
