@@ -22,7 +22,7 @@ An end-to-end DevSecOps project demonstrating how to securely build, containeriz
 
 ### Infrastructure
 
-- Terraform
+- Terraform.
 
 ### Containerization
 
