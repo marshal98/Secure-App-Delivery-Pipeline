@@ -21,9 +21,9 @@ variable "network_name" {
   default     = "secure-app-vpc"
 }
 
-variable "allowed_ssh_ip" {
-  description = "Public IP address allowed to SSH into the VM (CIDR format)"
-  type        = string
+variable "allowed_ssh_ips" {
+  description = "List of IPv4 addresses allowed to SSH into the VM"
+  type        = list(string)
 }
 
 variable "ssh_username" {
