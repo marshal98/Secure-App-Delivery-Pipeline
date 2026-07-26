@@ -1,0 +1,75 @@
+name: CD - Deploy to GCP VM
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_tag:
+        description: "Docker image tag to deploy"
+        required: true
+        default: "latest"
+
+permissions:
+  contents: read
+  packages: read
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: secure-notes-api
+  CONTAINER_NAME: secure-notes-api
+
+jobs:
+  deploy:
+    name: Deploy Application
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: production
+
+    steps:
+      - name: Deploy to GCP VM
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USER }}
+          key: ${{ secrets.VM_SSH_KEY }}
+          script: |
+            set -e
+
+            echo "Logging in to GitHub Container Registry..."
+
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io \
+              -u "${{ github.actor }}" \
+              --password-stdin
+
+            echo "Pulling latest image..."
+
+            docker pull ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ github.event.inputs.image_tag }}
+
+            echo "Stopping existing container..."
+
+            docker stop ${{ env.CONTAINER_NAME }} || true
+            docker rm ${{ env.CONTAINER_NAME }} || true
+
+            echo "Starting new container..."
+
+            docker run -d \
+              --name ${{ env.CONTAINER_NAME }} \
+              --restart unless-stopped \
+              -p 8000:8000 \
+              ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+
+            echo "Waiting for application to become healthy..."
+
+            for i in {1..10}; do
+              if curl -fs http://localhost:8000/health > /dev/null; then
+                echo "Application is healthy."
+                exit 0
+              fi
+
+              echo "Waiting..."
+              sleep 3
+            done
+
+            echo "Deployment failed. Health check did not pass."
+            exit 1
