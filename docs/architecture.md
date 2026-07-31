@@ -1,67 +1,51 @@
 # Architecture
 
-## Current Architecture
+## High Level Architecture
 
-```text
-                    Google Cloud Platform
+```mermaid
+flowchart LR
 
-                    +----------------------+
-                    |   Custom VPC         |
-                    +----------+-----------+
-                               |
-                     +---------+---------+
-                     | Custom Subnet     |
-                     +---------+---------+
-                               |
-                     +---------+---------+
-                     | Ubuntu VM         |
-                     | e2-small          |
-                     +---------+---------+
-                               |
-                +--------------+--------------+
-                | Firewall Rules              |
-                | SSH (Restricted)            |
-                | HTTP                        |
-                | HTTPS                       |
-                +-----------------------------+
+Developer --> GitHub
+
+GitHub --> CI
+
+CI --> GHCR
+
+GHCR --> CD
+
+CD --> VM
+
+VM --> Docker
+
+Docker --> FastAPI
 ```
 
----
+## Components
 
-## Resources Created
+### Developer
 
-| Resource | Status |
-|----------|--------|
-| VPC      | ✅ |
-| Subnet   | ✅ |
-| Firewall | ✅ |
-| Ubuntu VM| ✅ |
+Pushes application changes.
 
----
+### GitHub
 
-## Future Architecture
+Hosts source code and triggers workflows.
 
-```text
-Developer
-      │
-      ▼
-GitHub
-      │
-      ▼
-GitHub Actions
-      │
-      ▼
-Docker Build
-      │
-      ▼
-Container Registry
-      │
-      ▼
-Ubuntu VM
-      │
-      ▼
-Docker Container
-      │
-      ▼
-FastAPI Application
-```
+### CI
+
+Builds and publishes Docker images.
+
+### GHCR
+
+Stores versioned container images.
+
+### CD
+
+Deploys application to the VM.
+
+### Google Cloud VM
+
+Runs Docker containers.
+
+### FastAPI
+
+Hosts the Secure Notes API.
