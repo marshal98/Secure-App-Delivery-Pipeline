@@ -1,7 +1,7 @@
 name: Security - Secret Scanning
 
 on:
-  workflow_dispatch:
+  workflow_dispatch:   
   push:
     branches:
       - main
@@ -18,11 +18,32 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      GITLEAKS_VERSION: "8.24.3"
+
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Run Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Install Gitleaks
+        run: |
+          mkdir -p /tmp/gitleaks
+          cd /tmp/gitleaks
+
+          wget https://github.com/gitleaks/gitleaks/releases/download/v${GITLEAKS_VERSION}/gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz
+
+          tar -xzf gitleaks_${GITLEAKS_VERSION}_linux_x64.tar.gz
+
+          sudo mv gitleaks /usr/local/bin/
+
+      - name: Verify Installation
+        run: |
+          gitleaks version
+
+      - name: Scan Repository
+        run: |
+          gitleaks detect \
+            --no-git \
+            --source . \
+            --redact \
+            --verbose
