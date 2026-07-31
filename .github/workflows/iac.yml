@@ -1,0 +1,34 @@
+name: Security - IaC
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  checkov:
+    name: Checkov IaC Scan
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Checkov
+        run: |
+          chmod +x scripts/install-checkov.sh
+          ./scripts/install-checkov.sh
+
+      - name: Run Checkov
+        run: |
+          checkov \
+            -d infrastructure/terraform \
+            --framework terraform
