@@ -32,3 +32,4 @@ jobs:
           checkov \
             -d infrastructure/terraform \
             --framework terraform
+            --compact
