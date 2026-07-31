@@ -33,7 +33,7 @@ resource "google_compute_firewall" "allow_ssh" {
   }
 
   source_ranges = var.allowed_ssh_ips
-
+  # source_ranges = ["0.0.0.0/0"]
   target_tags = ["web-server"]
 }
 
