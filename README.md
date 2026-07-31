@@ -100,4 +100,4 @@ Docker --> FastAPI
 - SBOM
 - HTTPS
 - Automatic Rollback
-- Blue/Green Deployment
+- Blue/Green Deployment.
