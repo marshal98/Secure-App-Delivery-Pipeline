@@ -22,13 +22,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Debug Download
-        run: |
-            VERSION=0.70.0
-            URL="https://github.com/aquasecurity/trivy/releases/download/v${VERSION}/trivy_${VERSION}_Linux-64bit.tar.gz"
-            echo "$URL"
-            curl -I -L "$URL"
-
       - name: Install Trivy
         run: |
           chmod +x scripts/install-trivy.sh
