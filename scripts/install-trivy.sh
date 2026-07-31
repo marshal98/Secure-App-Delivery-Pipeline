@@ -6,15 +6,20 @@ TRIVY_VERSION="0.65.0"
 
 echo "Installing Trivy ${TRIVY_VERSION}..."
 
-mkdir -p /tmp/trivy
-cd /tmp/trivy
+WORKDIR=$(mktemp -d)
+cd "$WORKDIR"
 
-curl -sSL -o trivy.tar.gz \
-  "https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz"
+DOWNLOAD_URL="https://github.com/aquasecurity/trivy/releases/download/v${TRIVY_VERSION}/trivy_${TRIVY_VERSION}_Linux-64bit.tar.gz"
+
+echo "Downloading from:"
+echo "$DOWNLOAD_URL"
+
+curl -fL -o trivy.tar.gz "$DOWNLOAD_URL"
 
 tar -xzf trivy.tar.gz
 
-sudo install trivy /usr/local/bin/trivy
+sudo install -m 755 trivy /usr/local/bin/trivy
 
-echo "Installed Trivy Version:"
+echo
+echo "Installed version:"
 trivy --version
