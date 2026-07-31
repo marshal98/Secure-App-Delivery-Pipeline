@@ -2,61 +2,32 @@
 
 ## Phase 1
 
-- [x] Google Cloud Setup
-- [x] Terraform
-- [x] VPC
-- [x] Subnet
-- [x] Firewall
-- [x] VM
+- CI
+- CD
+- Docker
+- Terraform
+
+Completed
 
 ---
 
 ## Phase 2
 
-- [ ] SSH into VM
-- [ ] Install Docker
-- [ ] Build Sample Application
-- [ ] Dockerize Application
+- Trivy Image Scan
+- Trivy Filesystem Scan
+- Gitleaks
+- Checkov
+- SBOM
+
+In Progress
 
 ---
 
 ## Phase 3
 
-- [ ] GitHub Container Registry
-- [ ] Push Docker Image
+- HTTPS
+- Automatic Rollback
+- Blue Green Deployment
+- Docker Compose
 
----
-
-## Phase 4
-
-- [ ] GitHub Actions CI/CD
-
-- Build
-- Test
-- Security Scan
-- Push Image
-- Deploy to VM
-
----
-
-## Phase 5
-
-Security
-
-- [ ] Trivy
-- [ ] Gitleaks
-- [ ] Checkov
-- [ ] SBOM
-- [ ] Dependabot
-
----
-
-## Phase 6
-
-Production Improvements
-
-- [ ] Remote Terraform State
-- [ ] Static IP
-- [ ] Nginx Reverse Proxy
-- [ ] HTTPS
-- [ ] Monitoring
+Planned
