@@ -106,4 +106,4 @@ jobs:
           COSIGN_EXPERIMENTAL: "1"
         run: |
           cosign sign --yes \
-            $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:${{ github.sha }}
+            $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:latest
