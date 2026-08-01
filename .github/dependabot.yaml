@@ -1,0 +1,62 @@
+version: 2
+
+updates:
+  # Python Dependencies
+  - package-ecosystem: "pip"
+    directory: "/app"
+    schedule:
+      interval: "weekly"
+
+    open-pull-requests-limit: 5
+
+    labels:
+      - "dependencies"
+      - "python"
+
+    commit-message:
+      prefix: "deps(pip)"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+    open-pull-requests-limit: 5
+
+    labels:
+      - "dependencies"
+      - "github-actions"
+
+    commit-message:
+      prefix: "deps(actions)"
+
+  # Docker
+  - package-ecosystem: "docker"
+    directory: "/app"
+    schedule:
+      interval: "weekly"
+
+    open-pull-requests-limit: 5
+
+    labels:
+      - "dependencies"
+      - "docker"
+
+    commit-message:
+      prefix: "deps(docker)"
+
+  # Terraform
+  - package-ecosystem: "terraform"
+    directory: "/infrastructure/terraform"
+    schedule:
+      interval: "weekly"
+
+    open-pull-requests-limit: 5
+
+    labels:
+      - "dependencies"
+      - "terraform"
+
+    commit-message:
+      prefix: "deps(terraform)"

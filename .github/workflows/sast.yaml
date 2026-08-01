@@ -1,4 +1,4 @@
-name: Security - SAST
+name: Security - SAST Scanning
 
 on:
   workflow_dispatch:
