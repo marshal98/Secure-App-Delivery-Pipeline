@@ -56,6 +56,14 @@ jobs:
           docker build \
             -t secure-notes-api:build \
             .          
+                      
+      - name: Scan Docker Image
+        run: |
+          trivy image \
+            --severity HIGH,CRITICAL \
+            --ignore-unfixed \
+            --exit-code 1 \
+            secure-notes-api:build
 
       - name: Generate SBOM
         run: |
@@ -67,14 +75,6 @@ jobs:
         with:
           name: cyclonedx-sbom
           path: app/sbom.json
-                      
-      - name: Scan Docker Image
-        run: |
-          trivy image \
-            --severity HIGH,CRITICAL \
-            --ignore-unfixed \
-            --exit-code 1 \
-            secure-notes-api:build
 
       - name: Tag Docker Image
         run: |
