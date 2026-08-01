@@ -2,13 +2,28 @@
 
 A production-inspired Secure Software Delivery Pipeline demonstrating modern DevSecOps practices from source code to deployment.
 
-[![CI](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yml)
-[![CD](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yml)
-[![Secret Scan](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yml)
-[![SCA](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yml)
-[![IaC](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yml)
-[![SAST](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yml)
+---
 
+## 📊 Workflow Status
+
+| Workflow | Status |
+|----------|--------|
+| CI - Build & Publish | [![CI](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yml) |
+| CD - Deploy | [![CD](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yml) |
+| Secret Scan | [![Secret Scan](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yml) |
+| SCA (Trivy FS) | [![SCA](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yml) |
+| IaC Security | [![IaC](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yml) |
+| SAST (Semgrep) | [![SAST](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yml) |
+
+## 🛠️ Tech Stack
+
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Framework-009688?logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED?logo=docker)
+![Terraform](https://img.shields.io/badge/Terraform-IaC-844FBA?logo=terraform)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?logo=github-actions)
+![GCP](https://img.shields.io/badge/Google_Cloud-GCP-4285F4?logo=google-cloud)
+![License](https://img.shields.io/badge/License-MIT-green)
 ---
 
 ## 📖 Overview
