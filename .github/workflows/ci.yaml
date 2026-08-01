@@ -42,6 +42,11 @@ jobs:
           chmod +x ../scripts/install-trivy.sh
           ../scripts/install-trivy.sh
 
+      - name: Install Syft
+        run: |
+          chmod +x ../scripts/install-syft.sh
+          ../scripts/install-syft.sh
+
       - name: Verify Application
         run: |
           python -c "from app.main import app; print('Application loaded successfully')"
@@ -52,6 +57,17 @@ jobs:
             -t secure-notes-api:build \
             .          
 
+      - name: Generate SBOM
+        run: |
+          syft secure-notes-api:build \
+            -o cyclonedx-json=sbom.json
+
+      - name: Upload SBOM
+        uses: actions/upload-artifact@v4
+        with:
+          name: cyclonedx-sbom
+          path: app/sbom.json
+                      
       - name: Scan Docker Image
         run: |
           trivy image \
