@@ -9,6 +9,7 @@ on:
 permissions:
   contents: read
   packages: write
+  id-token: write
 
 env:
   REGISTRY: ghcr.io
@@ -46,6 +47,11 @@ jobs:
         run: |
           chmod +x ../scripts/install-syft.sh
           ../scripts/install-syft.sh
+
+      - name: Install Cosign
+        run: |
+          chmod +x ../scripts/install-cosign.sh
+          ../scripts/install-cosign.sh
 
       - name: Verify Application
         run: |
@@ -94,3 +100,10 @@ jobs:
         run: |
           docker push $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:${{ github.sha }}
           docker push $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:latest
+
+      - name: Sign Container Image
+        env:
+          COSIGN_EXPERIMENTAL: "1"
+        run: |
+          cosign sign --yes \
+            $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:${{ github.sha }}
