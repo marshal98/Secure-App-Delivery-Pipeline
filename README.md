@@ -8,12 +8,12 @@ A production-inspired Secure Software Delivery Pipeline demonstrating modern Dev
 
 | Workflow | Status |
 |----------|--------|
-| CI - Build & Publish | [![CI](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yml) |
-| CD - Deploy | [![CD](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yml) |
-| Secret Scan | [![Secret Scan](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yml) |
-| SCA (Trivy FS) | [![SCA](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yml) |
-| IaC Security | [![IaC](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yml) |
-| SAST (Semgrep) | [![SAST](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yml) |
+| CI - Build & Publish | [![CI](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yaml) |
+| CD - Deploy | [![CD](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yaml) |
+| Secret Scan | [![Secret Scan](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yaml) |
+| SCA (Trivy FS) | [![SCA](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yaml) |
+| IaC Security | [![IaC](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yaml) |
+| SAST (Semgrep) | [![SAST](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yaml) |
 
 ## 🛠️ Tech Stack
 
@@ -144,7 +144,7 @@ GitHub Push
 ├── docs/
 ├── .github/
 │   ├── workflows/
-│   └── dependabot.yml
+│   └── dependabot.yaml
 ├── README.md
 └── LICENSE
 ```
