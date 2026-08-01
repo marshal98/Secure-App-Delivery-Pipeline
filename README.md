@@ -1,103 +1,183 @@
 # 🚀 Secure App Delivery Pipeline
 
-![Terraform](https://img.shields.io/badge/Terraform-IaC-623CE4)
-![Docker](https://img.shields.io/badge/Docker-Containers-2496ED)
-![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI/CD-2088FF)
-![FastAPI](https://img.shields.io/badge/FastAPI-Python-009688)
-![Google Cloud](https://img.shields.io/badge/Google_Cloud-GCP-4285F4)
-
-## Overview
-
-Secure App Delivery Pipeline is an end-to-end DevSecOps project demonstrating how modern applications can be securely built, containerized, published, and deployed to Google Cloud using Infrastructure as Code and GitHub Actions.
-
-The project focuses on automation, repeatability, and secure deployment practices while remaining simple enough to understand and extend.
+A production-inspired Secure Software Delivery Pipeline demonstrating modern DevSecOps practices from source code to deployment.
 
 ---
 
-## Features
+## 📊 Workflow Status
 
-- Infrastructure as Code using Terraform
-- Google Cloud VPC, Subnet and Firewall
-- Compute Engine VM
-- Dockerized FastAPI application
-- GitHub Container Registry (GHCR)
-- GitHub Actions Continuous Integration
-- GitHub Actions Continuous Deployment
-- Health Check validation
-- Nginx Reverse Proxy
-- SSH-based automated deployment
+| Workflow | Status |
+|----------|--------|
+| CI - Build & Publish | [![CI](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yml) |
+| CD - Deploy | [![CD](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yml) |
+| Secret Scan | [![Secret Scan](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yml) |
+| SCA (Trivy FS) | [![SCA](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yml) |
+| IaC Security | [![IaC](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yml) |
+| SAST (Semgrep) | [![SAST](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yml) |
+
+## 🛠️ Tech Stack
+
+![Python](https://img.shields.io/badge/Python-3.12-blue?logo=python)
+![FastAPI](https://img.shields.io/badge/FastAPI-Framework-009688?logo=fastapi)
+![Docker](https://img.shields.io/badge/Docker-Container-2496ED?logo=docker)
+![Terraform](https://img.shields.io/badge/Terraform-IaC-844FBA?logo=terraform)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI%2FCD-2088FF?logo=github-actions)
+![GCP](https://img.shields.io/badge/Google_Cloud-GCP-4285F4?logo=google-cloud)
+![License](https://img.shields.io/badge/License-MIT-green)
+---
+
+## 📖 Overview
+
+This project demonstrates how security can be integrated throughout the Software Development Lifecycle (SDLC) using GitHub Actions, Terraform, Docker, Google Cloud Platform (GCP), and multiple security scanning tools.
+
+The objective is to ensure applications are continuously validated for security before reaching production.
 
 ---
 
-## Architecture
+## 🏗 Architecture
 
-```mermaid
-flowchart LR
+<p align="center">
+  <img src="docs/images/architecture.png" alt="Secure App Delivery Pipeline Architecture" width="1000">
+</p>
 
-Developer --> GitHub
+---
 
-GitHub --> CI["GitHub Actions (CI)"]
+## ✨ Features
 
-CI --> GHCR["GitHub Container Registry"]
+- Infrastructure Provisioning with Terraform
+- FastAPI Application
+- Docker Containerization
+- GitHub Actions CI/CD
+- Deployment to Google Cloud Platform
+- Reverse Proxy using Nginx
+- Health Check Validation
 
-GHCR --> CD["GitHub Actions (CD)"]
+### Security Controls
 
-CD --> VM["Google Cloud VM"]
+- Pre-Commit Secret Scanning (Gitleaks)
+- Secret Scanning Pipeline
+- Software Composition Analysis (Trivy Filesystem)
+- Infrastructure as Code Security (Checkov)
+- Static Application Security Testing (Semgrep)
+- Container Image Scanning (Trivy)
+- SBOM Generation (Syft)
+- Automated Dependency Updates (Dependabot)
 
-VM --> Docker
+---
 
-Docker --> FastAPI
+## 🔒 Security Pipeline
+
+```text
+Developer
+      │
+      ▼
+Pre-Commit (Gitleaks)
+      │
+      ▼
+GitHub Push
+      │
+      ├── Secret Scan
+      ├── SCA
+      ├── IaC
+      ├── SAST
+      └── CI
+            ├── Build Docker Image
+            ├── Container Scan
+            ├── Generate SBOM
+            ├── Push to GHCR
+            └── Deploy
 ```
 
 ---
 
-## Repository Structure
+## 🛡 Security Controls
+
+| Layer | Tool | Purpose |
+|---------|------|----------|
+| Secret Scanning | Gitleaks | Detect hardcoded secrets |
+| Dependency Scanning | Trivy FS | Detect vulnerable dependencies |
+| Infrastructure Security | Checkov | Terraform Security Validation |
+| Static Code Analysis | Semgrep | Secure Coding Validation |
+| Container Security | Trivy Image | Container Vulnerability Scanning |
+| Software Supply Chain | Syft | SBOM Generation |
+| Dependency Management | Dependabot | Automated Dependency Updates |
+
+---
+
+## ⚙ Technology Stack
+
+### Cloud
+- Google Cloud Platform (GCP)
+
+### Infrastructure
+- Terraform
+
+### Application
+- FastAPI
+- Python
+
+### Container
+- Docker
+- Nginx
+
+### CI/CD
+- GitHub Actions
+
+### Security
+- Gitleaks
+- Trivy
+- Checkov
+- Semgrep
+- Syft
+- Dependabot
+
+---
+
+## 📂 Repository Structure
 
 ```text
 .
 ├── app/
 ├── infrastructure/
+│   └── terraform/
+├── scripts/
 ├── docs/
 ├── .github/
-└── README.md
+│   ├── workflows/
+│   └── dependabot.yml
+├── README.md
+└── LICENSE
 ```
 
 ---
 
-## Documentation
+## 🚀 Future Enhancements
 
-| Document | Description |
-|----------|-------------|
-| architecture.md | Solution Architecture |
-| infrastructure.md | Terraform Infrastructure |
-| application.md | FastAPI Application |
-| ci.md | CI Pipeline |
-| cd.md | CD Pipeline |
-| troubleshooting.md | Common Issues |
-| roadmap.md | Future Enhancements |
+- Cosign Image Signing
+- SLSA Provenance
+- OWASP ZAP
+- Kubernetes Deployment
+- GitOps (ArgoCD)
+- Runtime Security (Falco)
+- OPA Policy Enforcement
 
 ---
 
-## Tech Stack
+## 📚 Lessons Learned
 
-- Python
-- FastAPI
-- Docker
-- Terraform
-- GitHub Actions
-- GitHub Container Registry
-- Google Cloud Platform
-- Ubuntu
-- Nginx
+This project demonstrates how security can be integrated throughout the software delivery lifecycle using a shift-left approach.
+
+Key takeaways include:
+
+- Security should be automated.
+- Every security control should have a single responsibility.
+- Infrastructure should be validated before deployment.
+- Containers should be scanned before publication.
+- SBOMs improve software supply chain visibility.
+- Dependency updates should be automated.
 
 ---
 
-## Future Enhancements
+## 📄 License
 
-- Trivy
-- Gitleaks
-- Checkov
-- SBOM
-- HTTPS
-- Automatic Rollback
-- Blue/Green Deployment.
+This project is licensed under the MIT License.
