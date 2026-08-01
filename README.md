@@ -10,7 +10,7 @@ A production-inspired Secure Software Delivery Pipeline demonstrating modern Dev
 |----------|--------|
 | CI - Build & Publish | [![CI](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/ci.yaml) |
 | CD - Deploy | [![CD](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/cd.yaml) |
-| Secret Scan | [![Secret Scan](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yaml) |
+| Secret Scan | [![Secret Scan](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret-scan.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/secret_scan.yaml) |
 | SCA (Trivy FS) | [![SCA](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sca.yaml) |
 | IaC Security | [![IaC](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/iac.yaml) |
 | SAST (Semgrep) | [![SAST](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yaml/badge.svg)](https://github.com/marshal98/Secure-App-Delivery-Pipeline/actions/workflows/sast.yaml) |
