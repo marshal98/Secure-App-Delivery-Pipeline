@@ -53,7 +53,7 @@ jobs:
             $IMAGE          
 
       - name: Deploy to GCP VM
-        uses: appleboy/ssh-action@v1.2.0
+        uses: appleboy/ssh-action@v1.2.5
         with:
           host: ${{ secrets.VM_HOST }}
           username: ${{ secrets.VM_USER }}
