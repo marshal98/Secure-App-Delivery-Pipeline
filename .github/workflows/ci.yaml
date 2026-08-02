@@ -10,6 +10,7 @@ permissions:
   contents: read
   packages: write
   id-token: write
+  attestations: write
 
 env:
   REGISTRY: ghcr.io
@@ -101,9 +102,28 @@ jobs:
           docker push $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:${{ github.sha }}
           docker push $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:latest
 
+      - name: Get Image Digest
+        if: github.event_name == 'push'
+        id: digest
+        run: |
+          DIGEST=$(docker image inspect \
+            $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:latest \
+            --format='{{index .RepoDigests 0}}' | cut -d'@' -f2)
+
+          echo "digest=$DIGEST" >> "$GITHUB_OUTPUT"
+
+      - name: Generate SLSA Provenance
+        if: github.event_name == 'push'
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.digest.outputs.digest }}
+          push-to-registry: true
+
       - name: Sign Container Image
+        if: github.event_name == 'push'
         env:
           COSIGN_EXPERIMENTAL: "1"
         run: |
           cosign sign --yes \
-            $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME:latest
+            $REGISTRY/${{ github.repository_owner }}/$IMAGE_NAME@${{ steps.digest.outputs.digest }}
